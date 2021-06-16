@@ -1,3 +1,3 @@
-# birthday countdown
+# Birthday countdown
 
-Um web site de contagem de aniversario com js
+Um web site de contagem regressiva de aniversario desenvolvido com funções javascript.
