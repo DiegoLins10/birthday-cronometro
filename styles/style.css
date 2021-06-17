@@ -15,7 +15,7 @@ body {
 }
 .container {
   /*color: rgba(55, 59, 65, 0.8);*/
-  color: #c7c7c7;
+  color: #c7c7c7; /* c7c7c7 */
   font-family: Helvetica, sans-serif;
   font-weight: lighter;
   text-align: center;
@@ -63,7 +63,7 @@ li span {
 }
 .giftbox:after {
   position: absolute;
-  color: #fff;
+  color: #fff; /* fff */
   width: 100%;
   content: "Click Me!";
   left: 0;

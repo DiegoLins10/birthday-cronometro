@@ -4,7 +4,7 @@ const giftbox = document.getElementById('merrywrap');
 const canvasC = document.getElementById('c');
 
 const config = {
-  birthdate: 'JuL 05, 2021',
+  birthdate: 'Jun 17, 2021',
   name: 'DÉBORA CECÍLIA'
 };
 
@@ -26,7 +26,7 @@ const second = 1000,
   hour = minute * 60,
   day = hour * 24;
 
-let countDown = new Date(`${config.birthdate} 00:00:00`).getTime();
+let countDown = new Date(`${config.birthdate} 16:07:00`).getTime();
 console.log(countDown)
 x = setInterval(function() {
   let now = new Date().getTime(),
@@ -114,7 +114,7 @@ console.log(hour + 'hour')
     this.fireworkDy = this.y - hh;
 
     let hue = (x / calc.totalWidth) * 360;
-
+    console.log(hue + 'hue')
     this.color = 'hsl(hue,80%,50%)'.replace('hue', hue);
     this.lightAlphaColor = 'hsla(hue,80%,light%,alp)'.replace('hue', hue);
     this.lightColor = 'hsl(hue,80%,light%)'.replace('hue', hue);
@@ -410,7 +410,7 @@ console.log(hour + 'hour')
   function anim() {
     window.requestAnimationFrame(anim);
 
-    ctx.fillStyle = '#fff';
+    ctx.fillStyle = 'black'; //#fff branco
     ctx.fillRect(0, 0, w, h);
 
     ctx.translate(hw, hh);
