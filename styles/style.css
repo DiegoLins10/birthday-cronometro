@@ -9,11 +9,13 @@ canvas {
   left: 0;
 }
 body {
-  background: #ffffff;
+  /*background: #ffffff;*/
   overflow: hidden;
+  background-color: black;
 }
 .container {
-  color: rgba(55, 59, 65, 0.8);
+  /*color: rgba(55, 59, 65, 0.8);*/
+  color: #c7c7c7;
   font-family: Helvetica, sans-serif;
   font-weight: lighter;
   text-align: center;
