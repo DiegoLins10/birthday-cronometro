@@ -27,13 +27,17 @@ const second = 1000,
   day = hour * 24;
 
 let countDown = new Date(`${config.birthdate} 00:00:00`).getTime();
+console.log(countDown)
 x = setInterval(function() {
   let now = new Date().getTime(),
     distance = countDown - now;
+console.log(day + 'dia') // console de verificação
+console.log(distance + 'distance')
+console.log(hour + 'hour')
 
-  document.getElementById('day').innerText = Math.floor(distance / day);
+  //document.getElementById('day').innerText = Math.floor(distance / day);
   document.getElementById('hour').innerText = Math.floor(
-    (distance % day) / hour
+    (distance) / hour // troque para conseguir os dias (distance % day) / hour
   );
   document.getElementById('minute').innerText = Math.floor(
     (distance % hour) / minute
