@@ -4,7 +4,7 @@ const giftbox = document.getElementById('merrywrap');
 const canvasC = document.getElementById('c');
 
 const config = {
-  birthdate: 'Jun 17, 2021',
+  birthdate: 'Jul 05, 2021',
   name: 'DÉBORA CECÍLIA'
 };
 
@@ -26,7 +26,7 @@ const second = 1000,
   hour = minute * 60,
   day = hour * 24;
 
-let countDown = new Date(`${config.birthdate} 16:07:00`).getTime();
+let countDown = new Date(`${config.birthdate} 00:00:00`).getTime();
 console.log(countDown)
 x = setInterval(function() {
   let now = new Date().getTime(),
