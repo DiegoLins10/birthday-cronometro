@@ -4,7 +4,7 @@ const giftbox = document.getElementById('merrywrap');
 const canvasC = document.getElementById('c');
 
 const config = {
-  birthdate: 'Jul 05, 2021',
+  birthdate: 'Jul 05, 2022',
   name: 'DÉBORA CECÍLIA'
 };
 
