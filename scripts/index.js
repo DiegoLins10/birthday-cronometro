@@ -6,7 +6,7 @@ const slide = document.getElementById('slide');
 
 const config = {
   // birthdate: 'Jul 05, 2022',
-  birthdate: 'Jul 02, 2022',
+  birthdate: 'Jul 05, 2022',
   name: 'DÉBORA CECÍLIA'
 };
 
