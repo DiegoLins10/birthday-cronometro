@@ -156,6 +156,7 @@ li span {
 .step-2 .giftbox .box {
   animation: flyDown 2s ease-in 0.05s forwards;
 }
+
 @keyframes wobble {
   25% {
       transform: rotate(4deg);
@@ -181,4 +182,27 @@ li span {
       transform: translateY(100%);
       opacity: 0;
  }
+}
+
+
+.gallery{
+  width: 85vw;
+  height: 60vmin;
+  display: flex;
+  gap: 5px;
+}
+
+.gallery img{
+  height: 100%;
+  flex: 1;
+  object-fit: cover;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: all 0.3s;
+}
+
+.gallery img:hover{
+  flex: 4;
+  
 }

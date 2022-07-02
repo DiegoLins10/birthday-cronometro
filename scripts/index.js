@@ -2,9 +2,11 @@ const count = document.getElementById('count');
 const head = document.getElementById('head');
 const giftbox = document.getElementById('merrywrap');
 const canvasC = document.getElementById('c');
+const slide = document.getElementById('slide');
 
 const config = {
-  birthdate: 'Jul 05, 2022',
+  // birthdate: 'Jul 05, 2022',
+  birthdate: 'Jul 02, 2022',
   name: 'DÉBORA CECÍLIA'
 };
 
@@ -13,6 +15,7 @@ function hideEverything() {
   count.style.display = 'none';
   giftbox.style.display = 'none';
   canvasC.style.display = 'none';
+  slide.style.display = 'none';
 }
 
 hideEverything();
@@ -52,9 +55,9 @@ console.log(hour + 'hour')
     hw = w / 2, // half-width
     hh = h / 2,
     opts = {
-      strings: ['HAPPY', 'BIRTHDAY!', 'EU TE AMO', config.name, 'OBRIGADO POR TUDO.'],
+      strings: ['Feliz ' + 'aniversario meu amor, ' + 'Eu te amo.', 'Acima alguns dos melhores momentos', ' que passei com você', 'com a musica que me lembra vc.'],
       charSize: 30,
-      charSpacing: 35,
+      charSpacing: 30,
       lineHeight: 40,
 
       cx: w / 2,
@@ -475,6 +478,15 @@ console.log(hour + 'hour')
       merrywrap.className = 'merrywrap step-' + step;
     }
 
+    function sli(){
+      const div = document.getElementById('audio');
+      //  div.innerHTML = '<audio controls src="./img/Sunflower - Rex Orange County (legendado).mp3">O seu navegador não tem suporte à áudio.</audio> ';
+       div.innerHTML = "<embed src='./img/Sunflower - Rex Orange County (legendado).mp3' hidden=true autostart=true loop=false>";
+
+      slide.style.display =  'flex';
+      c.style.margin = '230px 0 0 0';
+    }
+
     function openBox() {
       if (step === 1) {
         box.removeEventListener('click', openBox, false);
@@ -493,6 +505,7 @@ console.log(hour + 'hour')
     function showfireworks() {
       canvasC.style.display = 'initial';
       setTimeout(anim, 1500);
+      setTimeout(sli, 1500);
     }
 
     init();
