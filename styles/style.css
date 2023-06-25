@@ -226,7 +226,7 @@ background: linear-gradient(to right, #45B649, #DCE35B);
 .card {
   background: #12192c;
   border-radius: 30px;
-  height: 85vh;
+  height: 800px;
   width: 80vw;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   text-align: center;
@@ -244,10 +244,14 @@ background: linear-gradient(to right, #45B649, #DCE35B);
     flex-direction: row-reverse;
   }
   .card img.birthday {
-    width: 60%;
+    width: 50%;
     max-width: 50vw;
     max-height: unset;
     border-radius: 30px;
+  }
+
+  .gallery{
+    margin-left: 7%;
   }
 }
 
@@ -259,6 +263,10 @@ background: linear-gradient(to right, #45B649, #DCE35B);
     width: 100%;
     max-width: 50vw;
     max-height: unset;
+  }
+
+  text{
+    margin-top:  0;
   }
 }
 
