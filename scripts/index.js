@@ -6,7 +6,7 @@ const slide = document.getElementById('slide');
 
 const config = {
   // birthdate: 'Jul 05, 2022',
-  birthdate: 'Jul 05, 2023',
+  birthdate: 'Jul 05, 2022',
   name: 'DÉBORA CECÍLIA'
 };
 
@@ -55,7 +55,8 @@ console.log(hour + 'hour')
     hw = w / 2, // half-width
     hh = h / 2,
     opts = {
-      strings: ['Feliz ' + 'aniversario meu amor, ' + 'Eu te amo.', 'Acima alguns dos melhores momentos', ' que passei com você', 'com a musica que me lembra vc.'],
+      // strings: ['Feliz ' + 'aniversario meu amor, ' + 'Eu te amo.', 'Acima alguns dos melhores momentos', ' que passei com você', 'com a musica que me lembra vc.'],
+      strings: ['', ''],
       charSize: 30,
       charSpacing: 30,
       lineHeight: 40,
@@ -483,7 +484,9 @@ console.log(hour + 'hour')
       //  div.innerHTML = '<audio controls src="./img/Sunflower - Rex Orange County (legendado).mp3">O seu navegador não tem suporte à áudio.</audio> ';
        div.innerHTML = "<embed src='./img/Sunflower - Rex Orange County (legendado).mp3' hidden=true autostart=true loop=false>";
 
+      // slide.style.display =  'flex';
       slide.style.display =  'flex';
+      slide.style.marginLeft = '10%'
       c.style.margin = '230px 0 0 0';
     }
 
@@ -505,7 +508,7 @@ console.log(hour + 'hour')
     function showfireworks() {
       canvasC.style.display = 'initial';
       setTimeout(anim, 1500);
-      setTimeout(sli, 1500);
+      setTimeout(sli, 2500);
     }
 
     init();
