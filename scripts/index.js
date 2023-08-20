@@ -4,12 +4,21 @@ const giftbox = document.getElementById('merrywrap');
 const canvasC = document.getElementById('c');
 const slide = document.getElementById('slide');
 
-const config = {
+let birthdate = 'Jul 05, 2023';
+let newDate = new Date(`${birthdate} 00:00:00`);
+let dateNow = new Date();
+var config = {
   // birthdate: 'Jul 05, 2022',
-  birthdate: 'Jul 05, 2023',
+  birthdate: newDate.getFullYear() < dateNow.getFullYear() ? birthdate.replace(`${newDate.getFullYear()}`, `${dateNow.getFullYear()}`) : birthdate,
   name: 'DÉBORA CECÍLIA'
 };
 
+
+console.log(newDate.getFullYear() < dateNow.getFullYear())
+console.log(config.birthdate)
+let countDown = new Date(`${config.birthdate} 00:00:00`).getTime();
+
+console.log(config.birthdate)
 function hideEverything() {
   head.style.display = 'none';
   count.style.display = 'none';
@@ -18,7 +27,9 @@ function hideEverything() {
   slide.style.display = 'none';
 }
 
+
 hideEverything();
+
 
 const confettiSettings = { target: 'confetti' };
 const confetti = new window.ConfettiGenerator(confettiSettings);
@@ -29,7 +40,8 @@ const second = 1000,
   hour = minute * 60,
   day = hour * 24;
 
-let countDown = new Date(`${config.birthdate} 00:00:00`).getTime();
+
+
 console.log(countDown)
 x = setInterval(function() {
   let now = new Date().getTime(),
