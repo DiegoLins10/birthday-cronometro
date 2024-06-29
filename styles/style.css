@@ -477,7 +477,7 @@ img.birthday {
 }
 @media (min-width: 300px) and (max-width: 600px) {
   .note__text p {
-    font-size: 1.025rem;
+    font-size: 0.855rem;
   }
 }
 @media (min-width: 600px) {
