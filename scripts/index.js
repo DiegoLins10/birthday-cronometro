@@ -496,7 +496,7 @@ console.log(hour + 'hour')
        const div = document.getElementById('audio');
       //  div.innerHTML = '<audio controls src="./img/Sunflower - Rex Orange County (legendado).mp3">O seu navegador não tem suporte à áudio.</audio> ';
       // div.innerHTML = "<embed src='./img/SnapInsta.io - Zé Neto e Cristiano - MOÇA DO ESPELHO - Zé Neto e Cristiano Acústico (128 kbps).mp3' hidden=true autostart=true loop=false>";
-      div.innerHTML = "<embed src='./img/Lauv - Feelings _ LEGENDADO-TRADUÇÃO (192).mp3' hidden=true autostart=true loop=false>";
+      div.innerHTML = "<embed src='./img/Lauv - Feelings _ LEGENDADO-TRADUÇÃO (192).mp3' hidden=true autostart=true loop=true>";
 
       // slide.style.display =  'flex';
       slide.style.display =  'flex';
