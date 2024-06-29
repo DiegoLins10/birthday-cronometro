@@ -696,6 +696,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let startY = 0;
   let endY = 0;
   const threshold = 100;
+  const loader = document.getElementById('loader');
 
   window.addEventListener('touchstart', (event) => {
       if (window.scrollY === 0) {
@@ -709,7 +710,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.addEventListener('touchend', () => {
       if (startY !== 0 && endY - startY > threshold) {
-          window.location.reload();
+          loader.classList.add('show');
+          setTimeout(() => {
+              window.location.reload();
+          }, 1000); // Simula tempo de carregamento
       }
       startY = 0;
       endY = 0;
