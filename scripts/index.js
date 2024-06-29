@@ -4,7 +4,7 @@ const giftbox = document.getElementById('merrywrap');
 const canvasC = document.getElementById('c');
 const slide = document.getElementById('slide');
 
-let birthdate = 'Jun 05, 2024';
+let birthdate = 'Jul 05, 2024';
 // let birthdate = 'Jul 05, 2023';
 let newDate = new Date(`${birthdate} 00:00:00`);
 let dateNow = new Date();
