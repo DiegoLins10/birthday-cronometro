@@ -493,9 +493,10 @@ console.log(hour + 'hour')
     }
 
     function sli(){
-      // const div = document.getElementById('audio');
+       const div = document.getElementById('audio');
       //  div.innerHTML = '<audio controls src="./img/Sunflower - Rex Orange County (legendado).mp3">O seu navegador não tem suporte à áudio.</audio> ';
       // div.innerHTML = "<embed src='./img/SnapInsta.io - Zé Neto e Cristiano - MOÇA DO ESPELHO - Zé Neto e Cristiano Acústico (128 kbps).mp3' hidden=true autostart=true loop=false>";
+      div.innerHTML = "<embed src='./img/Lauv - Feelings _ LEGENDADO-TRADUÇÃO (192).mp3' hidden=true autostart=true loop=false>";
 
       // slide.style.display =  'flex';
       slide.style.display =  'flex';
@@ -688,3 +689,29 @@ document.querySelector(".js-sticker").addEventListener("click", sticker);
 window.onresize = function (event) {
   recize_notes();
 };
+
+
+// pull-to-refresh
+document.addEventListener('DOMContentLoaded', () => {
+  let startY = 0;
+  let endY = 0;
+  const threshold = 100;
+
+  window.addEventListener('touchstart', (event) => {
+      if (window.scrollY === 0) {
+          startY = event.touches[0].clientY;
+      }
+  });
+
+  window.addEventListener('touchmove', (event) => {
+      endY = event.touches[0].clientY;
+  });
+
+  window.addEventListener('touchend', () => {
+      if (startY !== 0 && endY - startY > threshold) {
+          window.location.reload();
+      }
+      startY = 0;
+      endY = 0;
+  });
+});
