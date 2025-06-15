@@ -13,11 +13,6 @@ Site ao vivo: [https://debsday.netlify.app/](https://debsday.netlify.app/)
 
 ---
 
-![Banner](https://debsday.netlify.app/img/cronometro.png)  
-*Imagem ilustrativa do projeto*
-
----
-
 ## Funcionalidades
 
 - Contagem regressiva dinâmica até o aniversário
@@ -76,6 +71,11 @@ Você pode alterar facilmente:
 * Textos e fotos dentro das notas para personalizar as mensagens
 * Cores e estilos no CSS para adequar ao seu gosto
 * Velocidade e estilo das animações no JS
+
+---
+
+![Banner](https://debsday.netlify.app/img/cronometro.png)  
+*Imagem ilustrativa do projeto*
 
 ---
 
