@@ -4,7 +4,7 @@ const giftbox = document.getElementById('merrywrap');
 const canvasC = document.getElementById('c');
 const slide = document.getElementById('slide');
 
-let birthdate = 'Jun 05, 2025';
+let birthdate = 'Jul 05, 2025';
 let confeteLigado = false;
 
 let newDate = new Date(`${birthdate} 00:00:00`);
