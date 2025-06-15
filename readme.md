@@ -74,6 +74,7 @@ Você pode alterar facilmente:
 
 ---
 
+## Imagem do projeto
 ![Banner](https://debsday.netlify.app/img/cronometro.png)  
 *Imagem ilustrativa do projeto*
 
