@@ -5,7 +5,8 @@ const canvasC = document.getElementById('c');
 const slide = document.getElementById('slide');
 
 let birthdate = 'Jul 05, 2024';
-// let birthdate = 'Jul 05, 2023';
+let confeteLigado = false;
+
 let newDate = new Date(`${birthdate} 00:00:00`);
 let dateNow = new Date();
 var config = {
@@ -34,7 +35,8 @@ hideEverything();
 
 const confettiSettings = { target: 'confetti' };
 const confetti = new window.ConfettiGenerator(confettiSettings);
-confetti.render();
+desliga_confete()
+
 
 const second = 1000,
   minute = second * 60,
@@ -46,10 +48,13 @@ const second = 1000,
 console.log(countDown)
 x = setInterval(function() {
   let now = new Date().getTime(),
-    distance = countDown - now;
-console.log(day + 'dia') // console de verificação
-console.log(distance + 'distance')
-console.log(hour + 'hour')
+  distance = countDown - now;
+  console.log(day + 'dia') // console de verificação
+  console.log(distance + 'distance')
+  console.log(hour + 'hour')
+
+  document.getElementById('yearauto').textContent = new Date().getFullYear();
+
 
   //document.getElementById('day').innerText = Math.floor(distance / day);
   document.getElementById('hour').innerText = Math.floor(
@@ -425,6 +430,7 @@ console.log(hour + 'hour')
   }
 
   function anim() {
+
     window.requestAnimationFrame(anim);
 
     ctx.fillStyle = 'black'; //#fff branco
@@ -510,6 +516,7 @@ console.log(hour + 'hour')
       }
       stepClass(step);
       if (step === 3) {
+        startMoonAnimation();//inicia animacao
       }
       if (step === 4) {
         return;
@@ -521,8 +528,10 @@ console.log(hour + 'hour')
 
     function showfireworks() {
       canvasC.style.display = 'initial';
-      setTimeout(anim, 1500);
-      setTimeout(sli, 2500);
+      // setTimeout(anim, 1500);
+      // setTimeout(sli, 2500);
+      // setTimeout(startMoonAnimation(), 5500)
+
     }
 
     init();
@@ -718,4 +727,231 @@ document.addEventListener('DOMContentLoaded', () => {
       startY = 0;
       endY = 0;
   });
+});
+
+
+const canvas = document.getElementById('starry-sky');
+const ctx = canvas.getContext('2d');
+
+let stars = [];
+const maxStars = 100;
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+
+function createStars() {
+  stars = [];
+  for (let i = 0; i < maxStars; i++) {
+    stars.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      radius: Math.random() * 1.2 + 0.3,
+      alpha: Math.random(),
+      delta: (Math.random() * 0.02) + 0.005 // velocidade de piscada
+    });
+  }
+}
+
+function drawStars() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  stars.forEach(star => {
+    star.alpha += star.delta;
+    if (star.alpha <= 0) {
+      star.alpha = 0;
+      star.delta = -star.delta;
+    } else if (star.alpha >= 1) {
+      star.alpha = 1;
+      star.delta = -star.delta;
+    }
+
+    ctx.beginPath();
+    ctx.arc(star.x, star.y, star.radius, 0, 2 * Math.PI);
+    ctx.fillStyle = `rgba(255, 255, 255, ${star.alpha})`;
+    ctx.fill();
+  });
+}
+
+function animate() {
+  drawStars();
+  requestAnimationFrame(animate);
+}
+
+function desliga_confete(){
+  if(confeteLigado == true){
+    confetti.render();
+  }
+}
+
+function startMoonAnimation() {
+  let moonCanvas = document.getElementById('moon-canvas');
+  if (!moonCanvas) {
+    moonCanvas = document.createElement('canvas');
+    moonCanvas.id = 'moon-canvas';
+    document.body.appendChild(moonCanvas);
+    moonCanvas.style.position = 'fixed';
+    moonCanvas.style.top = '0';
+    moonCanvas.style.left = '0';
+    moonCanvas.style.zIndex = '-1';
+    moonCanvas.style.pointerEvents = 'none';
+  }
+
+  const ctx = moonCanvas.getContext('2d');
+  let width = (moonCanvas.width = window.innerWidth);
+  let height = (moonCanvas.height = window.innerHeight);
+
+  window.addEventListener('resize', () => {
+    width = moonCanvas.width = window.innerWidth;
+    height = moonCanvas.height = window.innerHeight;
+  });
+
+  const stars = Array.from({ length: 100 }, () => ({
+    x: Math.random() * width,
+    y: Math.random() * height,
+    radius: Math.random() * 1.5,
+    alpha: Math.random(),
+    delta: 0.005 + Math.random() * 0.02
+  }));
+
+  let messageOpacity = 0;
+
+  function drawMoonScene() {
+    ctx.clearRect(0, 0, width, height);
+
+    // 💜 Céu com degradê
+    const gradient = ctx.createLinearGradient(0, 0, 0, height);
+    gradient.addColorStop(0, "#0d1b2a");
+    gradient.addColorStop(1, "#1b263b");
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, width, height);
+
+    // 🌟 Estrelas cintilando
+    for (const star of stars) {
+      star.alpha += star.delta;
+      if (star.alpha <= 0 || star.alpha >= 1) {
+        star.delta = -star.delta;
+      }
+      ctx.beginPath();
+      ctx.arc(star.x, star.y, star.radius, 0, 2 * Math.PI);
+      ctx.fillStyle = `rgba(255, 255, 255, ${star.alpha})`;
+      ctx.fill();
+    }
+
+    // 🌕 Lua central
+    const moonX = width / 2;
+    const moonY = height / 2;
+    const moonRadius = 80;
+
+    ctx.beginPath();
+    ctx.arc(moonX, moonY, moonRadius, 0, 2 * Math.PI);
+    ctx.fillStyle = '#fff9c4';
+    ctx.shadowColor = '#fff9c4';
+    ctx.shadowBlur = 40;
+    ctx.fill();
+
+   drawCouple(ctx, moonX - 170, moonY + 20);
+
+    // 💌 Mensagem com fade-in
+    if (messageOpacity < 1) {
+      messageOpacity += 0.005;
+    }
+    ctx.shadowBlur = 0;
+    ctx.font = 'bold 30px "Segoe UI", sans-serif';
+    ctx.fillStyle = `rgba(255, 255, 255, ${messageOpacity})`;
+    ctx.textAlign = 'center';
+    ctx.fillText("Feliz Aniversário, meu raio de luar 💖", moonX, moonY + moonRadius + 60);
+    ctx.font = 'italic 20px "Segoe UI", sans-serif';
+    ctx.fillText("Que a sua vida seja sempre iluminada e cheia de amor! Eu te amo demais.", moonX, moonY + moonRadius + 90);
+    ctx.font = 'italic 10px "Segoe UI", sans-serif';
+    ctx.fillText("By Diego Lins, Your love", moonX, moonY + moonRadius + 120);
+  }
+
+  function animateMoon() {
+    drawMoonScene();
+    requestAnimationFrame(animateMoon);
+  }
+
+  animateMoon();
+}
+
+function drawCouple(ctx, x, y) {
+  ctx.save();
+  ctx.translate(x, y);
+
+  // --- Pessoa 1 ---
+  // Cabelo ondulado
+  ctx.beginPath();
+  ctx.moveTo(-30, -30);
+  ctx.bezierCurveTo(-45, -15, -45, 15, -30, 30);
+  ctx.bezierCurveTo(-20, 20, -25, -20, -30, -30);
+  ctx.fillStyle = '#3a2c1e'; // castanho escuro
+  ctx.fill();
+
+  // Rosto
+  ctx.beginPath();
+  ctx.arc(-10, 0, 15, 0, Math.PI * 2);
+  ctx.fillStyle = '#fddac5'; // pele clara
+
+  ctx.fill();
+
+  // Corpo (vestido)
+  ctx.beginPath();
+  ctx.moveTo(-10, 15);
+  ctx.lineTo(-35, 80);
+  ctx.quadraticCurveTo(-10, 100, 15, 80);
+  ctx.lineTo(-10, 15);
+  ctx.fillStyle = '#ffc0cb'; // vestido rosa claro
+  ctx.fill();
+
+  // Braço segurando
+  ctx.beginPath();
+  ctx.moveTo(0, 25);
+  ctx.lineTo(30, 40);
+  ctx.lineWidth = 4;
+  ctx.strokeStyle = '#fddac5';
+  ctx.stroke();
+
+  // --- Pessoa 2 ---
+  // Cabelo curto
+  ctx.beginPath();
+  ctx.arc(55, -10, 12, 0, Math.PI * 2);
+  ctx.fillStyle = '#2f2f2f'; // cabelo escuro
+  ctx.fill();
+
+  // Rosto
+  ctx.beginPath();
+  ctx.arc(55, 0, 15, 0, Math.PI * 2);
+  ctx.fillStyle = '#b98e68';
+  ctx.fill();
+
+  // Corpo (camiseta e calça)
+  ctx.beginPath();
+  ctx.moveTo(55, 15);
+  ctx.lineTo(35, 80);
+  ctx.lineTo(75, 80);
+  ctx.lineTo(55, 15);
+  ctx.fillStyle = '#add8e6'; // azul claro
+  ctx.fill();
+
+  // Braço segurando
+  ctx.beginPath();
+  ctx.moveTo(45, 25);
+  ctx.lineTo(15, 40);
+  ctx.lineWidth = 4;
+  ctx.strokeStyle = '#b98e68';
+  ctx.stroke();
+
+  ctx.restore();
+}
+
+
+// Iniciar
+resizeCanvas();
+createStars();
+animate();
+
+window.addEventListener('resize', () => {
+  resizeCanvas();
+  createStars();
 });
