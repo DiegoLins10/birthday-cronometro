@@ -3,6 +3,9 @@
 
 # Projeto Happy Birthday - Contador e Animações Personalizadas
 
+![Banner](https://debsday.netlify.app/img/cronometro.png)  
+*Imagem ilustrativa do projeto (adicione uma imagem se desejar)*
+
 ## Descrição
 
 Este projeto é uma página interativa e animada para celebrar o aniversário da sua esposa com contagem regressiva, céu estrelado, lua romântica, casal animado e efeitos de confete. Além disso, contém uma caixa de presente animada com mensagens especiais.
