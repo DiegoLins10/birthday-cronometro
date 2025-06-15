@@ -502,12 +502,12 @@ x = setInterval(function() {
        const div = document.getElementById('audio');
       //  div.innerHTML = '<audio controls src="./img/Sunflower - Rex Orange County (legendado).mp3">O seu navegador não tem suporte à áudio.</audio> ';
       // div.innerHTML = "<embed src='./img/SnapInsta.io - Zé Neto e Cristiano - MOÇA DO ESPELHO - Zé Neto e Cristiano Acústico (128 kbps).mp3' hidden=true autostart=true loop=false>";
-      div.innerHTML = "<embed src='./img/Lauv - Feelings _ LEGENDADO-TRADUÇÃO (192).mp3' hidden=true autostart=true loop=true>";
+      div.innerHTML = "<embed src='./img/jorge & Mateus - Água de Oceano.mp3' hidden=true autostart=true loop=true>";
 
       // slide.style.display =  'flex';
-      slide.style.display =  'flex';
+      //slide.style.display =  'flex';
       //slide.style.marginLeft = '10%'
-      c.style.margin = '230px 0 0 0';
+      //c.style.margin = '230px 0 0 0';
     }
 
     function openBox() {
@@ -529,7 +529,7 @@ x = setInterval(function() {
     function showfireworks() {
       canvasC.style.display = 'initial';
       // setTimeout(anim, 1500);
-      // setTimeout(sli, 2500);
+      setTimeout(sli, 2500);
       // setTimeout(startMoonAnimation(), 5500)
 
     }
