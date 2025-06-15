@@ -1,11 +1,7 @@
-Claro! Aqui está um README completo e organizado para o seu projeto de aniversário animado, com regras, descrição, tecnologias e instruções.
 
 ---
 
 # Projeto Happy Birthday - Contador e Animações Personalizadas
-
-![Banner](https://debsday.netlify.app/banner.png)  
-*Imagem ilustrativa do projeto (adicione uma imagem se desejar)*
 
 ## Descrição
 
@@ -45,15 +41,13 @@ Site ao vivo: [https://debsday.netlify.app/](https://debsday.netlify.app/)
 ## Como usar localmente
 
 1. Clone este repositório:  
-   ```bash
    git clone https://github.com/seuusuario/happy-birthday.git
-````
+
 
 2. Entre na pasta:
 
-   ```bash
    cd happy-birthday
-   ```
+   
 3. Abra o arquivo `index.html` no navegador (recomendo usar Live Server ou similar para evitar problemas de CORS).
 
 ---
