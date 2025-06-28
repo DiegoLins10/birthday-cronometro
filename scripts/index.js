@@ -850,7 +850,7 @@ function startMoonAnimation() {
   ctx.shadowBlur = 40;
   ctx.fill();
 
-  drawCouple(ctx, moonX - 170, moonY + 20);
+  drawCouple(ctx, moonX - 150, moonY + 20);
 
   // 💌 Mensagem com fade-in
   if (messageOpacity < 1) {
