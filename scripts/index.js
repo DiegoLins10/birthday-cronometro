@@ -816,56 +816,101 @@ function startMoonAnimation() {
 
   let messageOpacity = 0;
 
-  function drawMoonScene() {
-    ctx.clearRect(0, 0, width, height);
+ function drawMoonScene() {
+  ctx.clearRect(0, 0, width, height);
 
-    // 💜 Céu com degradê
-    const gradient = ctx.createLinearGradient(0, 0, 0, height);
-    gradient.addColorStop(0, "#0d1b2a");
-    gradient.addColorStop(1, "#1b263b");
-    ctx.fillStyle = gradient;
-    ctx.fillRect(0, 0, width, height);
+  // 💜 Céu com degradê
+  const gradient = ctx.createLinearGradient(0, 0, 0, height);
+  gradient.addColorStop(0, "#0d1b2a");
+  gradient.addColorStop(1, "#1b263b");
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, width, height);
 
-    // 🌟 Estrelas cintilando
-    for (const star of stars) {
-      star.alpha += star.delta;
-      if (star.alpha <= 0 || star.alpha >= 1) {
-        star.delta = -star.delta;
-      }
-      ctx.beginPath();
-      ctx.arc(star.x, star.y, star.radius, 0, 2 * Math.PI);
-      ctx.fillStyle = `rgba(255, 255, 255, ${star.alpha})`;
-      ctx.fill();
+  // 🌟 Estrelas cintilando
+  for (const star of stars) {
+    star.alpha += star.delta;
+    if (star.alpha <= 0 || star.alpha >= 1) {
+      star.delta = -star.delta;
     }
-
-    // 🌕 Lua central
-    const moonX = width / 2;
-    const moonY = height / 2;
-    const moonRadius = 80;
-
     ctx.beginPath();
-    ctx.arc(moonX, moonY, moonRadius, 0, 2 * Math.PI);
-    ctx.fillStyle = '#fff9c4';
-    ctx.shadowColor = '#fff9c4';
-    ctx.shadowBlur = 40;
+    ctx.arc(star.x, star.y, star.radius, 0, 2 * Math.PI);
+    ctx.fillStyle = `rgba(255, 255, 255, ${star.alpha})`;
     ctx.fill();
-
-   drawCouple(ctx, moonX - 170, moonY + 20);
-
-    // 💌 Mensagem com fade-in
-    if (messageOpacity < 1) {
-      messageOpacity += 0.005;
-    }
-    ctx.shadowBlur = 0;
-    ctx.font = 'bold 30px "Segoe UI", sans-serif';
-    ctx.fillStyle = `rgba(255, 255, 255, ${messageOpacity})`;
-    ctx.textAlign = 'center';
-    ctx.fillText("Feliz Aniversário, meu raio de luar 💖", moonX, moonY + moonRadius + 60);
-    ctx.font = 'italic 20px "Segoe UI", sans-serif';
-    ctx.fillText("Que a sua vida seja sempre iluminada e cheia de amor! Eu te amo demais.", moonX, moonY + moonRadius + 90);
-    ctx.font = 'italic 10px "Segoe UI", sans-serif';
-    ctx.fillText("By Diego Lins, Your love", moonX, moonY + moonRadius + 120);
   }
+
+  // 🌕 Lua central
+  const moonX = width / 2;
+  const moonY = height / 2;
+  const moonRadius = 80;
+
+  ctx.beginPath();
+  ctx.arc(moonX, moonY, moonRadius, 0, 2 * Math.PI);
+  ctx.fillStyle = '#fff9c4';
+  ctx.shadowColor = '#fff9c4';
+  ctx.shadowBlur = 40;
+  ctx.fill();
+
+  drawCouple(ctx, moonX - 150, moonY + 20);
+
+  // 💌 Mensagem com fade-in
+  if (messageOpacity < 1) {
+    messageOpacity += 0.005;
+  }
+  ctx.shadowBlur = 0;
+  ctx.fillStyle = `rgba(255, 255, 255, ${messageOpacity})`;
+  ctx.textAlign = 'center';
+
+  // Fontes proporcionais à largura da tela
+  const titleFontSize = Math.min(width / 15, 30);
+  const subtitleFontSize = Math.min(width / 20, 20);
+  const footerFontSize = Math.min(width / 40, 12);
+
+  // Função para quebrar o texto automaticamente em várias linhas
+  function wrapText(ctx, text, maxWidth, font) {
+    ctx.font = font;
+    const words = text.split(' ');
+    const lines = [];
+    let line = '';
+
+    for (let i = 0; i < words.length; i++) {
+      const testLine = line + words[i] + ' ';
+      const { width } = ctx.measureText(testLine);
+      if (width > maxWidth && i > 0) {
+        lines.push(line.trim());
+        line = words[i] + ' ';
+      } else {
+        line = testLine;
+      }
+    }
+    lines.push(line.trim());
+    return lines;
+  }
+
+  const maxTextWidth = width * 0.8; // 80% da largura da tela
+  let currentY = moonY + moonRadius + 60;
+
+  // Primeira linha — quebrada dinamicamente
+  let wrappedLines = wrapText(ctx, "Feliz Aniversário, meu raio de luar 💖", maxTextWidth, `bold ${titleFontSize}px "Segoe UI", sans-serif`);
+  ctx.fillStyle = `rgba(255, 255, 255, ${messageOpacity})`;
+  ctx.textAlign = 'center';
+  ctx.font = `bold ${titleFontSize}px "Segoe UI", sans-serif`;
+  wrappedLines.forEach(line => {
+    ctx.fillText(line, moonX, currentY);
+    currentY += titleFontSize + 5;
+  });
+
+  // Segunda e terceira linhas
+  ctx.font = `italic ${subtitleFontSize}px "Segoe UI", sans-serif`;
+  ctx.fillText("Que a sua vida seja sempre iluminada", moonX, currentY);
+  currentY += subtitleFontSize + 5;
+  ctx.fillText("e cheia de amor! Eu te amo demais.", moonX, currentY);
+  currentY += subtitleFontSize + 5;
+
+  // Última linha
+  ctx.font = `italic ${footerFontSize}px "Segoe UI", sans-serif`;
+  ctx.fillText("By Diego Lins, Your love", moonX, currentY);
+}
+
 
   function animateMoon() {
     drawMoonScene();
